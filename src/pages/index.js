@@ -20,6 +20,7 @@ const IndexPage = () => (
                 path={node.frontmatter.path}
                 date={node.frontmatter.date}
                 body={node.excerpt.body}
+                image={node.frontmatter.image}
               />
             ))}
           </div>
@@ -40,6 +41,16 @@ const indexQuery = graphql`
             date(formatString: "MMM Do YYYY")
             author
             path
+            image {
+              childImageSharp {
+                gatsbyImageData(
+                  width: 768
+                  height: 300
+                  placeholder: BLURRED
+                  formats: [AUTO, WEBP, AVIF]
+                )
+              }
+            }
           }
           excerpt
         }
