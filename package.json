@@ -16,6 +16,7 @@
     "gatsby-plugin-sass": "^4.8.0",
     "gatsby-plugin-sharp": "^3.6.0",
     "gatsby-source-filesystem": "^3.6.0",
+    "gatsby-transformer-remark": "^4.5.0",
     "gatsby-transformer-sharp": "^3.6.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
@@ -33,7 +34,7 @@
   "license": "0BSD",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop",
+    "dev": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
