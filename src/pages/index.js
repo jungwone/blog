@@ -3,6 +3,8 @@ import { graphql, StaticQuery } from "gatsby"
 import Layout from "../components/layout"
 import Seo from "../components/seo"
 import Post from "../components/Post"
+import styled from "@emotion/styled"
+import "../styles/index.scss"
 
 const IndexPage = () => (
   <Layout>
@@ -12,9 +14,10 @@ const IndexPage = () => (
       query={indexQuery}
       render={data => {
         return (
-          <div>
+          <PostList>
             {data.allMarkdownRemark.edges.map(({ node }) => (
               <Post
+                key={node.id}
                 title={node.frontmatter.title}
                 author={node.frontmatter.author}
                 path={node.frontmatter.path}
@@ -24,7 +27,7 @@ const IndexPage = () => (
                 image={node.frontmatter.image}
               />
             ))}
-          </div>
+          </PostList>
         )
       }}
     />
@@ -39,7 +42,7 @@ const indexQuery = graphql`
           id
           frontmatter {
             title
-            date(formatString: "MMM Do YYYY")
+            date(formatString: "YYYY-MM-DD")
             author
             path
             tags
@@ -62,3 +65,8 @@ const indexQuery = graphql`
 `
 
 export default IndexPage
+
+const PostList = styled.div`
+  max-width: 768px;
+  margin: auto;
+`
