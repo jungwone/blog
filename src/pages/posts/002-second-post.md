@@ -2,7 +2,6 @@
 title: "Second Post - HTML"
 date: "2021-06-27 18:36"
 author: "Joongwon"
-path: "/second-post"
 image: ../../images/post-image.jpg
 tags:
   - code

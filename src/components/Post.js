@@ -12,13 +12,13 @@ import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import { slugify } from "../utils/utilFunctions"
 import styled from "@emotion/styled"
 
-const Post = ({ title, author, path, date, body, image, tags }) => {
+const Post = ({ title, author, slug, date, body, image, tags }) => {
   const thumbnail = getImage(image)
   return (
     <PostWrapper>
       <GatsbyImage image={thumbnail} alt="thumbnail" />
       <PostBody>
-        <PostTitle to={path}>{title}</PostTitle>
+        <PostTitle to={slug}>{title}</PostTitle>
         <DateText>
           {date} by {author}
         </DateText>
@@ -27,13 +27,13 @@ const Post = ({ title, author, path, date, body, image, tags }) => {
           <TagList>
             {tags.map((tag, index) => (
               <li key={index}>
-                <Link to={`/tag/${slugify(tag)}`}>
-                  <Tag>#{tag}</Tag>
-                </Link>
+                {/* <Link to={`/tag/${slugify(tag)}`}> */}
+                <Tag to={`/tag/${slugify(tag)}`}>#{tag}</Tag>
+                {/* </Link> */}
               </li>
             ))}
           </TagList>
-          <ReadMore to={path}>Read more</ReadMore>
+          <ReadMore to={slug}>Read more</ReadMore>
         </div>
       </PostBody>
     </PostWrapper>
