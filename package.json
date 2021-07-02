@@ -10,6 +10,7 @@
     "bootstrap": "^5.0.2",
     "gatsby": "^3.6.2",
     "gatsby-plugin-catch-links": "^3.8.0",
+    "gatsby-plugin-disqus": "^1.2.2",
     "gatsby-plugin-emotion": "^6.8.0",
     "gatsby-plugin-gatsby-cloud": "^2.6.1",
     "gatsby-plugin-image": "^1.6.0",

@@ -4,10 +4,19 @@ import { graphql, Link } from "gatsby"
 import Seo from "../components/seo"
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import { slugify } from "../utils/utilFunctions"
+import { Disqus, CommentCount } from "gatsby-plugin-disqus"
 
-const SinglePost = ({ data }) => {
+const SinglePost = ({ data, pageContext }) => {
   const post = data.markdownRemark.frontmatter
   const thumbnail = getImage(post.image)
+  const baseUrl = "https://jungwone.github.io/"
+
+  const disqusConfig = {
+    url: baseUrl + pageContext.slug,
+    identifier: data.markdownRemark.id,
+    title: post.title,
+  }
+
   return (
     <Layout>
       <Seo title={post.title} />
@@ -23,6 +32,51 @@ const SinglePost = ({ data }) => {
             </li>
           ))}
         </ul>
+      </div>
+      <h3>Share this post</h3>
+      <div>
+        <ul>
+          <li>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href={`https://wwww.facebook.com/sharer/sharer.php?u=${baseUrl}${pageContext.slug}`}
+            >
+              facebook
+            </a>
+          </li>
+          <li>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href={`https://twitter.com/share?url=${baseUrl}${pageContext.slug}&text=${post.title}&viatitterHandle`}
+            >
+              twitter
+            </a>
+          </li>
+          <li>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href={`https://plus.google.com/share?url=${baseUrl}${pageContext.slug}`}
+            >
+              google
+            </a>
+          </li>
+          <li>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href={`https://www.linkedin.com/shareArticle?url=${baseUrl}${pageContext.slug}`}
+            >
+              linkedin
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <CommentCount config={disqusConfig} placehoolder={"..."} />
+        <Disqus config={disqusConfig} />
       </div>
     </Layout>
   )

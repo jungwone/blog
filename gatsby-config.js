@@ -10,6 +10,12 @@ module.exports = {
     `gatsby-plugin-sass`,
     `gatsby-plugin-catch-links`,
     {
+      resolve: `gatsby-plugin-disqus`,
+      options: {
+        shortname: `jungwone`,
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
