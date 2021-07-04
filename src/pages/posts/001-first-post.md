@@ -2,11 +2,13 @@
 title: "First Post - Introduction"
 date: "2021-06-27 18:34"
 author: "Joongwon"
-image: ../../images/post-image.jpg
+path: "/first-post"
+image: "../../images/default-image.jpg"
 tags:
-  - code
   - first post
+  - design
 ---
 
-Welcome to my blog! I hope you enjoy my content !!
-Welcome to my blog! I hope you enjoy my content !!
+첫번째 포스트 테스트 dsafadsfdasfadsfadsfadsfs
+
+gh pages 테스트
