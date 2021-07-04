@@ -1,6 +1,6 @@
 import React from "react"
 import Layout from "../components/layout"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import Seo from "../components/seo"
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import { slugify } from "../utils/utilFunctions"

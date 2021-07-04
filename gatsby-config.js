@@ -3,7 +3,7 @@ module.exports = {
     title: `중원이 블로그`,
     description: `공부한 것들과 개발과 관련된 일들을 기록하기 위한 블로그입니다.`,
     author: `Jungwon`,
-    siteUrl: `https://jungwone.github.io`,
+    siteUrl: `https://jungwone.github.io/`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
