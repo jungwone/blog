@@ -1,16 +1,9 @@
 import React from "react"
 import { Link } from "gatsby"
-import {
-  Badge,
-  Card,
-  CardTitle,
-  CardText,
-  CardSubtitle,
-  CardBody,
-} from "reactstrap"
 import { getImage, GatsbyImage } from "gatsby-plugin-image"
 import { slugify } from "../utils/utilFunctions"
 import styled from "@emotion/styled"
+import Tag from "./Tag"
 
 const Post = ({ title, author, slug, date, body, image, tags }) => {
   const thumbnail = getImage(image)
@@ -18,22 +11,20 @@ const Post = ({ title, author, slug, date, body, image, tags }) => {
     <PostWrapper>
       <GatsbyImage image={thumbnail} alt="thumbnail" />
       <PostBody>
-        <PostTitle to={slug}>{title}</PostTitle>
+        <PostTitle to={`/${slug}`}>{title}</PostTitle>
         <DateText>
           {date} by {author}
         </DateText>
-        <CardText>{body}</CardText>
+        <div>{body}</div>
         <div style={{ display: "flex" }}>
           <TagList>
             {tags.map((tag, index) => (
               <li key={index}>
-                {/* <Link to={`/tag/${slugify(tag)}`}> */}
                 <Tag to={`/tag/${slugify(tag)}`}>#{tag}</Tag>
-                {/* </Link> */}
               </li>
             ))}
           </TagList>
-          <ReadMore to={slug}>Read more</ReadMore>
+          <ReadMore to={`${slug}`}>Read more</ReadMore>
         </div>
       </PostBody>
     </PostWrapper>
@@ -56,11 +47,17 @@ const PostBody = styled.div`
 `
 
 const PostTitle = styled(Link)`
+  display: block;
+  width: 100%;
   font-size: 20px;
   font-weight: bold;
   color: #ff6363;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 12px;
 
-  &:hover {
+  text &:hover {
     text-decoration: underline;
   }
 `
@@ -80,22 +77,6 @@ const TagList = styled.ul`
   }
 `
 
-const Tag = styled(Link)`
-  padding: 3px 5px;
-  border-radius: 12px;
-  display: inline-flex;
-  align-items: center;
-  background-color: #ff6363;
-  color: #fff;
-  margin-right: 8px;
-  font-size: 14px;
-
-  &:hover {
-    transform: translateY(10%);
-    transition: all 0.2s;
-  }
-`
-
 const ReadMore = styled(Link)`
   border: 1px solid #ff6363;
   border-radius: 4px;
@@ -105,5 +86,6 @@ const ReadMore = styled(Link)`
   &:hover {
     transition: 0.2s;
     transform: translateY(-20%);
+    color: #ff6363;
   }
 `

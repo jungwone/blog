@@ -2,10 +2,16 @@ import React from "react"
 import Layout from "../components/layout"
 import Post from "../components/Post"
 import { graphql } from "gatsby"
+import Pagination from "@material-ui/lab/Pagination"
+import { navigate } from "gatsby"
 
 const postList = props => {
   const posts = props.data.allMarkdownRemark.edges
-  const { currentPage } = props.pageContext
+  const { currentPage, numberOfPages } = props.pageContext
+
+  const onChangePage = (event, pageNum) => {
+    navigate(`/page/${pageNum}`)
+  }
 
   return (
     <Layout>
@@ -22,6 +28,12 @@ const postList = props => {
           image={node.frontmatter.image}
         />
       ))}
+
+      <Pagination
+        page={currentPage}
+        count={numberOfPages}
+        onChange={onChangePage}
+      />
     </Layout>
   )
 }
