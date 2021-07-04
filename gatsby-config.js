@@ -1,14 +1,24 @@
 module.exports = {
   siteMetadata: {
-    title: `중원이의 블로그`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@gatsbyjs`,
+    title: `중원이 블로그`,
+    description: `공부한 것들과 개발과 관련된 일들을 기록하기 위한 블로그입니다.`,
+    author: `Jungwon`,
+    siteUrl: `https://jungwone.github.io`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-image`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-catch-links`,
+    `gatsby-plugin-sitemap`,
+    {
+      resolve: "gatsby-plugin-robots-txt",
+      options: {
+        host: "https://jungwone.github.io",
+        sitemap: "https://jungwone.github.io/sitemap.xml",
+        policy: [{ userAgent: "*", allow: "/" }],
+      },
+    },
     {
       resolve: `gatsby-plugin-disqus`,
       options: {
