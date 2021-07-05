@@ -147,7 +147,7 @@ const MarkdownRenderer = styled.div`
   * + h1,
   * + h2,
   * + h3 {
-    margin-top: 80px;
+    margin-top: 40px;
   }
 
   hr + h1,
@@ -172,7 +172,7 @@ const MarkdownRenderer = styled.div`
   blockquote {
     margin: 30px 0;
     padding: 5px 15px;
-    border-left: 2px solid #000000;
+    border-left: 4px solid #ddd;
     font-weight: 800;
   }
 
@@ -180,7 +180,7 @@ const MarkdownRenderer = styled.div`
   ol,
   ul {
     margin-left: 20px;
-    padding: 30px 0;
+    padding: 10px 0;
   }
 
   // Adjust Horizontal Rule style
@@ -215,7 +215,6 @@ const MarkdownRenderer = styled.div`
   // Markdown Responsive Design
   @media (max-width: 768px) {
     width: 100%;
-    padding: 80px 20px;
     line-height: 1.6;
     font-size: 14px;
 
