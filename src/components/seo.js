@@ -37,6 +37,10 @@ function Seo({ description, lang, meta, title }) {
       titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
       meta={[
         {
+          name: "google-site-verification",
+          content: "w9yKxgENDIAE09x5V1j_qJRaKMoxDXYoBc4GOFrstvc"
+        },
+        {
           name: `description`,
           content: metaDescription,
         },
