@@ -69,7 +69,7 @@ module.exports = {
       resolve: "gatsby-plugin-robots-txt",
       options: {
         host: "https://jungwone.github.io",
-        sitemap: "https://jungwone.github.io/sitemap.xml",
+        sitemap: "https://jungwone.github.io/sitemap/sitemap-index.xml",
         policy: [{ userAgent: "*", allow: "/" }],
       },
     },
