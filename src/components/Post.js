@@ -24,7 +24,7 @@ const Post = ({ title, author, slug, date, body, image, tags }) => {
               </li>
             ))}
           </TagList>
-          <ReadMore to={`${slug}`}>Read more</ReadMore>
+          <ReadMore to={`/${slug}`}>Read more</ReadMore>
         </div>
       </PostBody>
     </PostWrapper>
