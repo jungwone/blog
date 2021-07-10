@@ -16,13 +16,13 @@ const Header = props => {
         </LogoWrapper>
         <MenuList visible={isOpen}>
           <MenuListItem>
-            <Link to="/page/1">Posts</Link>
+            <MenuLink to="/page/1">Posts</MenuLink>
           </MenuListItem>
           <MenuListItem>
-            <Link to="/tags">Tags</Link>
+            <MenuLink to="/tags">Tags</MenuLink>
           </MenuListItem>
           <MenuListItem>
-            <Link to="/about">About</Link>
+            <MenuLink to="/about">About</MenuLink>
           </MenuListItem>
         </MenuList>
         <ToggleMenu>
@@ -84,6 +84,7 @@ const LogoWrapper = styled.div`
 const MenuList = styled.ul`
   display: flex;
   margin-left: auto;
+  
 
   @media (max-width: 768px) {
     margin: 0;
@@ -99,6 +100,7 @@ const MenuListItem = styled.li`
   display: flex;
   align-items: center;
   cursor: pointer;
+  
 
   a {
     text-decoration: none;
@@ -125,6 +127,12 @@ const MenuListItem = styled.li`
     }
   }
 `
+
+const MenuLink = styled(Link)`
+  display: flex;
+  align-items: center;
+  height:100%;
+`;
 
 const ToggleMenu = styled.div`
   position: absolute;

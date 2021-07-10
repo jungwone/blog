@@ -44,6 +44,10 @@ body {
     margin-block-end: 0.5rem;
   }
 
+  img {
+    z-index: -1;
+  }
+
   .ml-auto {
     margin-left: auto;
   }
