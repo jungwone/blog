@@ -5,13 +5,13 @@ import { slugify } from "../utils/utilFunctions"
 import styled from "@emotion/styled"
 import Tag from "./Tag"
 
-const Post = ({ title, author, slug, date, body, image, tags }) => {
+const Post = ({ title, author, slug, date, body, image, tags, path }) => {
   const thumbnail = getImage(image)
   return (
     <PostWrapper>
       <GatsbyImage image={thumbnail} alt="thumbnail" />
       <PostBody>
-        <PostTitle to={`/${slug}`}>{title}</PostTitle>
+        <PostTitle to={`${path}`}>{title}</PostTitle>
         <DateText>
           {date} by {author}
         </DateText>

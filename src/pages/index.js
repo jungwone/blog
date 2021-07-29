@@ -22,18 +22,21 @@ const IndexPage = () => {
         render={data => {
           return (
             <PostList>
-              {data.allMarkdownRemark.edges.map(({ node }) => (
-                <Post
-                  key={node.id}
-                  title={node.frontmatter.title}
-                  author={node.frontmatter.author}
-                  slug={node.fields.slug}
-                  date={node.frontmatter.date}
-                  body={node.excerpt.body}
-                  tags={node.frontmatter.tags}
-                  image={node.frontmatter.image}
-                />
-              ))}
+              {data.allMarkdownRemark.nodes.map(
+                ({ id, excerpt, fields, frontmatter }) => (
+                  <Post
+                    key={id}
+                    title={frontmatter.title}
+                    author={frontmatter.author}
+                    slug={fields.slug}
+                    date={frontmatter.date}
+                    body={excerpt}
+                    tags={frontmatter.tags}
+                    image={frontmatter.image}
+                    path={frontmatter.path}
+                  />
+                )
+              )}
             </PostList>
           )
         }}
@@ -49,29 +52,28 @@ const indexQuery = graphql`
       limit: 5
     ) {
       totalCount
-      edges {
-        node {
-          id
-          frontmatter {
-            title
-            date(formatString: "YYYY-MM-DD")
-            author
-            tags
-            image {
-              childImageSharp {
-                gatsbyImageData(
-                  width: 768
-                  height: 300
-                  placeholder: BLURRED
-                  formats: [AUTO, WEBP, AVIF]
-                )
-              }
+      nodes {
+        id
+        excerpt
+        fields {
+          slug
+        }
+        frontmatter {
+          title
+          date(formatString: "YYYY-MM-DD")
+          author
+          tags
+          path
+          image {
+            childImageSharp {
+              gatsbyImageData(
+                width: 768
+                height: 300
+                placeholder: BLURRED
+                formats: [AUTO, WEBP, AVIF]
+              )
             }
           }
-          fields {
-            slug
-          }
-          excerpt
         }
       }
     }

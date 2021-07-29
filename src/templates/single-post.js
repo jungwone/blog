@@ -181,6 +181,7 @@ const MarkdownRenderer = styled.div`
   ul {
     margin-left: 20px;
     padding: 10px 0;
+    list-style: disc;
   }
 
   // Adjust Horizontal Rule style

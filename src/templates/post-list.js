@@ -6,7 +6,7 @@ import Pagination from "@material-ui/lab/Pagination"
 import { navigate } from "gatsby"
 
 const postList = props => {
-  const posts = props.data.allMarkdownRemark.edges
+  const posts = props.data.allMarkdownRemark.nodes
   const { currentPage, numberOfPages } = props.pageContext
 
   const onChangePage = (event, pageNum) => {
@@ -16,16 +16,17 @@ const postList = props => {
   return (
     <Layout>
       <h1>{`Page ${currentPage}`}</h1>
-      {posts.map(({ node }) => (
+      {posts.map(({ id, excerpt, fields, frontmatter }) => (
         <Post
-          key={node.id}
-          slug={node.fields.slug}
-          title={node.frontmatter.title}
-          author={node.frontmatter.author}
-          date={node.frontmatter.date}
-          body={node.excerpt}
-          tags={node.frontmatter.tags}
-          image={node.frontmatter.image}
+          key={id}
+          title={frontmatter.title}
+          author={frontmatter.author}
+          slug={fields.slug}
+          date={frontmatter.date}
+          body={excerpt}
+          tags={frontmatter.tags}
+          image={frontmatter.image}
+          path={frontmatter.path}
         />
       ))}
 
@@ -45,29 +46,28 @@ export const postListQuery = graphql`
       limit: $limit
       skip: $skip
     ) {
-      edges {
-        node {
-          id
-          frontmatter {
-            title
-            date(formatString: "YYYY-MM-DD")
-            author
-            tags
-            image {
-              childImageSharp {
-                gatsbyImageData(
-                  width: 768
-                  height: 300
-                  placeholder: BLURRED
-                  formats: [AUTO, WEBP, AVIF]
-                )
-              }
+      nodes {
+        id
+        excerpt
+        fields {
+          slug
+        }
+        frontmatter {
+          title
+          date(formatString: "YYYY-MM-DD")
+          author
+          tags
+          path
+          image {
+            childImageSharp {
+              gatsbyImageData(
+                width: 768
+                height: 300
+                placeholder: BLURRED
+                formats: [AUTO, WEBP, AVIF]
+              )
             }
           }
-          fields {
-            slug
-          }
-          excerpt
         }
       }
     }

@@ -36,20 +36,29 @@ exports.createPages = ({ actions: { createPage }, graphql }) => {
             }
           }
         }
+        nodes {
+          fields {
+            slug
+          }
+          frontmatter {
+            author
+            tags
+            path
+          }
+        }
       }
     }
   `).then(res => {
     if (res.errors) return Promise.reject(res.errors)
 
-    const posts = res.data.allMarkdownRemark.edges
+    const posts = res.data.allMarkdownRemark.edges // Create single blog post pages
 
-    // Create single blog post pages
-    posts.forEach(({ node }) => {
+    const nodes = res.data.allMarkdownRemark.nodes
+    nodes.forEach(node => {
       createPage({
-        path: node.fields.slug,
+        path: node.frontmatter.path,
         component: templates.singlePost,
         context: {
-          // Passing slug for template to use to get postw
           slug: node.fields.slug,
         },
       })
@@ -92,7 +101,8 @@ exports.createPages = ({ actions: { createPage }, graphql }) => {
     })
 
     const postsPerPage = 5
-    const numberOfPages = Math.ceil(posts.length / postsPerPage)
+    // const numberOfPages = Math.ceil(posts.length / postsPerPage)
+    const numberOfPages = Math.ceil(nodes.length / postsPerPage)
 
     Array.from({ length: numberOfPages }).forEach((_, index) => {
       const currentPage = index + 1
