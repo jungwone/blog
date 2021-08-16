@@ -13,7 +13,7 @@ const tagPosts = ({ data, pageContext }) => {
   return (
     <Layout>
       <h1>{pageHeader}</h1>
-      {data.allMarkdownRemark.edges.map(({ node }) => (
+      {data.allMarkdownRemark.nodes.map(node => (
         <Post
           key={node.id}
           slug={node.fields.slug}
@@ -23,6 +23,7 @@ const tagPosts = ({ data, pageContext }) => {
           body={node.excerpt}
           tags={node.frontmatter.tags}
           image={node.frontmatter.image}
+          path={node.frontmatter.path}
         />
       ))}
     </Layout>
@@ -36,29 +37,28 @@ export const tagQuery = graphql`
       filter: { frontmatter: { tags: { in: [$tag] } } }
     ) {
       totalCount
-      edges {
-        node {
-          id
-          frontmatter {
-            title
-            date(formatString: "YYYY-MM-DD")
-            author
-            tags
-            image {
-              childImageSharp {
-                gatsbyImageData(
-                  width: 768
-                  height: 300
-                  placeholder: BLURRED
-                  formats: [AUTO, WEBP, AVIF]
-                )
-              }
+      nodes {
+        id
+        excerpt
+        fields {
+          slug
+        }
+        frontmatter {
+          title
+          date(formatString: "YYYY-MM-DD")
+          author
+          tags
+          path
+          image {
+            childImageSharp {
+              gatsbyImageData(
+                width: 768
+                height: 300
+                placeholder: BLURRED
+                formats: [AUTO, WEBP, AVIF]
+              )
             }
           }
-          fields {
-            slug
-          }
-          excerpt
         }
       }
     }
