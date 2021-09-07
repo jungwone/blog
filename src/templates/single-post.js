@@ -24,7 +24,7 @@ const SinglePost = ({ data, pageContext }) => {
 
   return (
     <Layout>
-      <Seo title={post.title} />
+      <Seo title={post.title} description={data.markdownRemark.excerpt} />
       <h1>{post.title}</h1>
       <div>
         <GatsbyImage image={thumbnail} alt="thumbnail" />
@@ -89,6 +89,7 @@ export const postQuery = graphql`
     markdownRemark(fields: { slug: { eq: $slug } }) {
       id
       html
+      excerpt
       frontmatter {
         title
         author

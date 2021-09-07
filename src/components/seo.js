@@ -38,11 +38,11 @@ function Seo({ description, lang, meta, title }) {
       meta={[
         {
           name: "naver-site-verification",
-          content: "33934ddf0a7799f375a2cd0ccb44f920ef54d2e5"
+          content: "33934ddf0a7799f375a2cd0ccb44f920ef54d2e5",
         },
         {
           name: "google-site-verification",
-          content: "w9yKxgENDIAE09x5V1j_qJRaKMoxDXYoBc4GOFrstvc"
+          content: "w9yKxgENDIAE09x5V1j_qJRaKMoxDXYoBc4GOFrstvc",
         },
         {
           name: `description`,
